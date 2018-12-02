@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require_relative 'permutation_engine.rb'
 require_relative 'node.rb'
 
-class WordFinderTest < MiniTest::Test
+class PermutationEngineTest < MiniTest::Test
 
   def test_read_graph_returns_array
     graph = read_graph ARGV[0]

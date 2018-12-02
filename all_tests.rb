@@ -2,4 +2,4 @@ require 'simplecov'
 
 SimpleCov.start
 
-require_relative 'test_word_finder.rb'
+require_relative 'permutation_engine_test.rb'
