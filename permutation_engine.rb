@@ -117,7 +117,8 @@ def print_result(max_length_words)
   max_length_words.each do |word|
     puts word.upcase
   end
-  puts "\nreal"
-  puts 'user'
-  puts 'sys'
+end
+
+def valid_input(args)
+  args.length == 1 && File.file?(args[0])
 end

@@ -1,6 +1,12 @@
 require_relative 'node.rb'
 require_relative 'permutation_engine.rb'
 
+# Check valid input
+unless valid_input ARGV
+  puts 'Invalid graph file specified'
+  exit 1
+end
+
 # Read graph file
 lines = read_graph ARGV[0]
 

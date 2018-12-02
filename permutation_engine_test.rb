@@ -5,12 +5,12 @@ require_relative 'node.rb'
 class PermutationEngineTest < MiniTest::Test
 
   def test_read_graph_returns_array
-    graph = read_graph ARGV[0]
+    graph = read_graph 'small_graph.txt'
     assert_instance_of Array, graph
   end
 
   def test_graph_array_size
-    graph = read_graph ARGV[0]
+    graph = read_graph 'small_graph.txt'
     assert !graph.empty?
   end
 
