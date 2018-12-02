@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative 'word_finder.rb'
+require_relative 'permutation_engine.rb'
 require_relative 'node.rb'
 
 class WordFinderTest < MiniTest::Test
