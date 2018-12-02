@@ -81,6 +81,9 @@ def do_permutation(cur)
   to_ret
 end
 
+puts ENV['RAILS_ENV']
+return if ENV['RAILS_ENV'] == 'test'
+
 # Read graph file
 lines = read_graph ARGV[0]
 

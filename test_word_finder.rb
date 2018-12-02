@@ -1,5 +1,4 @@
 require 'minitest/autorun'
-require 'simplecov'
 require_relative 'word_finder.rb'
 require_relative 'node.rb'
 
