@@ -1,7 +1,6 @@
-
 def read_graph(filename)
   lines = []
-  File.open(filename).each do |line|
+  File.open(filename).lazy.each do |line|
     lines.append(line.strip)
   end
   lines
@@ -9,7 +8,7 @@ end
 
 def read_dictionary(filename)
   words = {}
-  File.open(filename).each do |word|
+  File.open(filename).lazy.each do |word|
     words[word.strip] = true
   end
   words
@@ -17,7 +16,7 @@ end
 
 def create_prefixes_dict(words_dict)
   prefixes = {}
-  words_dict.each do |key, _val|
+  words_dict.lazy.each do |key, _val|
     prefixes[key[0..2].downcase] = true if key.length > 3
     prefixes[key[0..4].downcase] = true if key.length > 4
   end
@@ -26,7 +25,7 @@ end
 
 def create_nodes(lines)
   nodes = {}
-  lines.each do |line|
+  lines.lazy.each do |line|
     data = line.split(';')
     edges = data[2].nil? ? [] : data[2].split(',')
     nodes[data[0]] = Node.new(data[0], data[1], edges)
@@ -36,7 +35,7 @@ end
 
 def get_permutations(paths)
   perms = []
-  paths.each do |path|
+  paths.lazy.each do |path|
     # puts path
     perms += do_permutation path
   end
@@ -53,7 +52,7 @@ def do_permutation(cur)
   perms = do_permutation(cur[1..-1])
 
   # For each permutation
-  perms.each do |perm|
+  perms.lazy.each do |perm|
     # Char before permutation
     to_ret.append(first_char + perm)
 
@@ -79,7 +78,7 @@ def do_permutation(cur)
 end
 
 def initialize_edges(nodes)
-  nodes.each do |_key, node|
+  nodes.lazy.each do |_key, node|
     node.initialize_edges(nodes)
   end
 end
@@ -90,10 +89,10 @@ def find_max_length_words(nodes)
   max_length_words = []
   max_length = 0
 
-  nodes.each do |_key, node|
+  nodes.lazy.each do |_key, node|
     # Traverse edges of node and get all permutations
     permutations = get_permutations(node.traverse_node)
-    permutations.each do |word|
+    permutations.lazy.each do |word|
       word = word.downcase
 
       # Determine words with maximum length
@@ -114,7 +113,7 @@ end
 
 def print_result(max_length_words)
   puts 'Longest valid word(s):'
-  max_length_words.each do |word|
+  max_length_words.lazy.each do |word|
     puts word.upcase
   end
 end
